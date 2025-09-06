@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bnokv5t7oao7o"
+path="res://.godot/imported/DeathCaveExplorer.aseprite-49e0ec9a73e7b85a9eecc242f13c0ce2.res"
+
+[deps]
+
+source_file="res://assets/enemies/another_enemy/Aseprite Files/DeathCaveExplorer.aseprite"
+dest_files=["res://.godot/imported/DeathCaveExplorer.aseprite-49e0ec9a73e7b85a9eecc242f13c0ce2.res"]
+
+[params]
+

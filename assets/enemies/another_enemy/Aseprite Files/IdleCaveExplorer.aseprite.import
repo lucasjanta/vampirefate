@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bgpsrgo6ukudp"
+path="res://.godot/imported/IdleCaveExplorer.aseprite-e96bbae9bfe7bd18386cef45cf7a4472.res"
+
+[deps]
+
+source_file="res://assets/enemies/another_enemy/Aseprite Files/IdleCaveExplorer.aseprite"
+dest_files=["res://.godot/imported/IdleCaveExplorer.aseprite-e96bbae9bfe7bd18386cef45cf7a4472.res"]
+
+[params]
+

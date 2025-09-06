@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://db47fesosn0qh"
+path="res://.godot/imported/HurtCaveExplorer.aseprite-4e1077aa6e0d53df63de2bc14de6d356.res"
+
+[deps]
+
+source_file="res://assets/enemies/another_enemy/Aseprite Files/HurtCaveExplorer.aseprite"
+dest_files=["res://.godot/imported/HurtCaveExplorer.aseprite-4e1077aa6e0d53df63de2bc14de6d356.res"]
+
+[params]
+

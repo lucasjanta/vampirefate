@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://bfvbl35gblmxi"]
+
+[ext_resource type="Texture2D" uid="uid://b64vgwjae3ano" path="res://assets/enemies/16x16.png" id="1_0k7p5"]
+[ext_resource type="Script" uid="uid://d2y1w1qfqfd1g" path="res://scenes/old_man.gd" id="1_67335"]
+[ext_resource type="Script" uid="uid://dskafneivpxcp" path="res://scripts/StateMachine/OldManStateMachine/enemy_state_machine.gd" id="2_33qua"]
+[ext_resource type="Script" uid="uid://b2jvi2bog53he" path="res://scripts/StateMachine/OldManStateMachine/idle_state.gd" id="3_67335"]
+[ext_resource type="Script" uid="uid://t50ytj42wio3" path="res://scripts/StateMachine/OldManStateMachine/walk_state.gd" id="4_isgn0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5643s"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdlgl"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33qua"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67335"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isgn0"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm8um"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3kbb"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t3ve"]
+atlas = ExtResource("1_0k7p5")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rneiv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5643s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdlgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33qua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67335")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isgn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm8um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3kbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t3ve")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78ceb"]
+radius = 7.07107
+
+[node name="old_man" type="CharacterBody2D"]
+script = ExtResource("1_67335")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_rneiv")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_78ceb")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_33qua")
+initial_state_path = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_67335")
+
+[node name="Timer" type="Timer" parent="StateMachine/IdleState"]
+wait_time = 3.0
+autostart = true
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("4_isgn0")
+
+[node name="Timer" type="Timer" parent="StateMachine/WalkState"]
+wait_time = 2.0
+one_shot = true
+
+[node name="RunState" type="Node" parent="StateMachine"]
+
+[connection signal="timeout" from="StateMachine/IdleState/Timer" to="StateMachine/IdleState" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WalkState/Timer" to="StateMachine/WalkState" method="_on_timer_timeout"]

@@ -1,0 +1,180 @@
+[gd_scene load_steps=22 format=4 uid="uid://bebre6vdyb0ab"]
+
+[ext_resource type="Script" uid="uid://drw1s0darpjms" path="res://scenes/aldeao.gd" id="1_y2asl"]
+[ext_resource type="Script" uid="uid://dskafneivpxcp" path="res://scripts/StateMachine/OldManStateMachine/enemy_state_machine.gd" id="2_5f56d"]
+[ext_resource type="Script" uid="uid://b2jvi2bog53he" path="res://scripts/StateMachine/OldManStateMachine/idle_state.gd" id="3_31nep"]
+[ext_resource type="Script" uid="uid://t50ytj42wio3" path="res://scripts/StateMachine/OldManStateMachine/walk_state.gd" id="4_2eono"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_b508a"]
+_data = PackedByteArray("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")
+size_override = Vector2(128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrn1i"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ignwn"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8tq1"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2asl"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f56d"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31nep"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eono"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf6f6"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqyap"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ne6c"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgc3n"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5rmt"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uveec"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whj6d"]
+atlas = SubResource("PortableCompressedTexture2D_b508a")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g23l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrn1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ignwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8tq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2asl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f56d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31nep")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eono")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_lf6f6")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_gqyap")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_2ne6c")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_cgc3n")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_h5rmt")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_uveec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whj6d")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 13.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lf6f6"]
+radius = 13.0863
+
+[node name="aldeao" type="CharacterBody2D"]
+script = ExtResource("1_y2asl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3g23l")
+animation = &"Idle"
+offset = Vector2(2, -4)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/enemies/Character.aseprite",
+"source_uid": 7323081060814486567
+}
+metadata/_aseprite_wizard_source_file_hash_ = "50254d75d07e1d2421d24ad75a91d768"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lf6f6")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_5f56d")
+initial_state_path = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_31nep")
+
+[node name="Timer" type="Timer" parent="StateMachine/IdleState"]
+wait_time = 3.0
+autostart = true
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("4_2eono")
+
+[node name="Timer" type="Timer" parent="StateMachine/WalkState"]
+wait_time = 2.0
+one_shot = true
+
+[node name="RunState" type="Node" parent="StateMachine"]
+
+[connection signal="timeout" from="StateMachine/IdleState/Timer" to="StateMachine/IdleState" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WalkState/Timer" to="StateMachine/WalkState" method="_on_timer_timeout"]
