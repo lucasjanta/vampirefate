@@ -14,10 +14,11 @@ func enter():
 	player = get_parent().get_parent()
 	base_dmg = player.base_dmg
 	update_animation(direction)
+	player.velocity = attack_1fx.direction * attack_1fx.impulse_force
 	
 func physics_update(delta):
 	player.move_and_slide()
-	player.velocity = attack_1fx.direction * attack_1fx.impulse_force
+	
 
 	
 func update_animation(dir):

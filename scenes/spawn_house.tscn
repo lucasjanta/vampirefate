@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://7g4b51517cb3"]
+
+[ext_resource type="Script" uid="uid://ds5wodvu57vx2" path="res://scripts/Components/spawn_house.gd" id="1_dk84l"]
+[ext_resource type="Texture2D" uid="uid://8h4p0apnweqk" path="res://assets/props/Black Buildings/House1.png" id="2_i6sxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgpof"]
+radius = 204.061
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16pdj"]
+radius = 51.1566
+
+[node name="SpawnHouse" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_dk84l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.921875, 0.713013, 0.713013, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i6sxt")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 58)
+
+[node name="patrol_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="patrol_area"]
+shape = SubResource("CircleShape2D_cgpof")
+debug_color = Color(0.484151, 0.769531, 0.474945, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_16pdj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="patrol_area" to="." method="_on_patrol_area_body_entered"]
+[connection signal="body_exited" from="patrol_area" to="." method="_on_patrol_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

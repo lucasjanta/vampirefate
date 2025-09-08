@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cxywqauxpyelw"]
+[gd_scene load_steps=55 format=3 uid="uid://cxywqauxpyelw"]
 
 [ext_resource type="Texture2D" uid="uid://ctvpgwwd4r30i" path="res://assets/character/Vampire-all.png" id="1_ah4wh"]
 [ext_resource type="Script" uid="uid://b1rajs6dwht2a" path="res://scenes/vampire_player.gd" id="1_rp8kq"]
@@ -8,12 +8,35 @@
 [ext_resource type="Script" uid="uid://bgcwwb3ieo5w1" path="res://scripts/PlayerComponents/attack_1.gd" id="5_16mgq"]
 [ext_resource type="Script" uid="uid://b4n3ntqqdqa33" path="res://scripts/StateMachine/StateMachine.gd" id="5_hn6hu"]
 [ext_resource type="Script" uid="uid://b2axooenvdor7" path="res://scripts/StateMachine/PlayerStateMachine/idle_state.gd" id="5_k3u6o"]
+[ext_resource type="Texture2D" uid="uid://gp66koj3sull" path="res://assets/character/Vampire-Attack.png" id="5_lpdte"]
 [ext_resource type="Script" uid="uid://don0gxjolo3t" path="res://scripts/StateMachine/PlayerStateMachine/walk_state.gd" id="6_hn6hu"]
 [ext_resource type="Texture2D" uid="uid://bxbveuraarrdx" path="res://assets/UI/FreeHorrorUi.png" id="7_28dja"]
 [ext_resource type="Script" uid="uid://pbg3x7ow06jr" path="res://scripts/StateMachine/PlayerStateMachine/attack_state.gd" id="7_rp8kq"]
+[ext_resource type="Texture2D" uid="uid://bfpv01e4xavar" path="res://assets/vfx/light/light.png" id="12_wxqn8"]
+[ext_resource type="Script" uid="uid://d4crr0uj8pqxh" path="res://scripts/StateMachine/PlayerStateMachine/glide_state.gd" id="13_lcrdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rp8kq"]
 size = Vector2(24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3cwh"]
+atlas = ExtResource("5_lpdte")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1y4u"]
+atlas = ExtResource("5_lpdte")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrp1x"]
+atlas = ExtResource("5_lpdte")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k4ou"]
+atlas = ExtResource("5_lpdte")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec5b4"]
+atlas = ExtResource("5_lpdte")
+region = Rect2(80, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hn6hu"]
 atlas = ExtResource("1_ah4wh")
@@ -125,6 +148,26 @@ region = Rect2(96, 136, 32, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3cwh"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3cwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1y4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrp1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k4ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec5b4")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hn6hu")
@@ -332,7 +375,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"walk"]
+"values": [&"attack"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -341,10 +384,10 @@ tracks/1/path = NodePath("VampireAS:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -397,6 +440,34 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_rp8kq"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VampireAS:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VampireAS:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_lrp1x"]
 resource_name = "walk"
 length = 0.6
@@ -439,34 +510,6 @@ tracks/2/keys = {
 "values": [0.0, -0.174533, -0.349066, 0.0, 0.174533, 0.349066, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_rp8kq"]
-resource_name = "idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VampireAS:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VampireAS:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vh4ih"]
 _data = {
 &"RESET": SubResource("Animation_4k4ou"),
@@ -477,6 +520,24 @@ _data = {
 
 [node name="VampirePlayer" type="CharacterBody2D"]
 script = ExtResource("1_rp8kq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+follow_viewport_enabled = true
+
+[node name="MouseCursor" type="Sprite2D" parent="Control/CanvasLayer"]
+top_level = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_28dja")
+region_enabled = true
+region_rect = Rect2(198, 132, 24, 25)
 
 [node name="Attack1FX" type="Node2D" parent="."]
 script = ExtResource("5_16mgq")
@@ -489,18 +550,14 @@ region_enabled = true
 region_rect = Rect2(173, 19, 26, 27)
 
 [node name="HitArea" type="Area2D" parent="Attack1FX"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack1FX/HitArea"]
 position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_rp8kq")
 disabled = true
 debug_color = Color(0.424871, 0, 0.0946531, 0.42)
-
-[node name="MouseCursor" type="Sprite2D" parent="Attack1FX"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_28dja")
-region_enabled = true
-region_rect = Rect2(198, 132, 24, 25)
 
 [node name="VampireAS" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
@@ -530,3 +587,13 @@ script = ExtResource("6_hn6hu")
 script = ExtResource("7_rp8kq")
 
 [node name="Timer" type="Timer" parent="StateMachine/AttackState"]
+
+[node name="GlideState" type="Node" parent="StateMachine"]
+script = ExtResource("13_lcrdf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.85
+texture = ExtResource("12_wxqn8")
+texture_scale = 0.75
+
+[connection signal="body_entered" from="Attack1FX/HitArea" to="Attack1FX" method="_on_hit_area_body_entered"]

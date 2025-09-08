@@ -87,7 +87,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_31nep")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 7.0
 }, {
 "frames": [{
@@ -116,7 +116,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_whj6d")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"walk",
 "speed": 13.0
 }]
 
@@ -129,7 +129,7 @@ script = ExtResource("1_y2asl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3g23l")
-animation = &"Idle"
+animation = &"walk"
 offset = Vector2(2, -4)
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
